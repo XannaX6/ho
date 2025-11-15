@@ -1,0 +1,53 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block title %}Home — Xanna X6{% endblock %}
+{% block content %}
+<div class="row align-items-center">
+  <div class="col-md-6">
+    <h1 class="display-5">Hi, I'm Xanna X6</h1>
+    <p class="lead">I build web apps and solve problems, design graphics, write books, news or articcles. Welcome to my portfolio — here are some recent projects.</p>
+    <a class="btn btn-primary" href="{% url 'portfolio:projects_list' %}">See projects</a>
+  </div>
+  <div class="col-md-6 text-center">
+    <img src="{% static 'portfolio/images/hero-placeholder.png' %}" alt="hero" class="img-fluid rounded">
+  </div>
+</div>
+
+<hr class="my-5">
+
+<h2>Featured Projects</h2>
+<div class="row g-4">
+  {% for project in projects %}
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        {% if project.image %}
+          <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+        {% else %}
+          <img src="{% static 'portfolio/images/project-placeholder.png' %}" class="card-img-top" alt="placeholder">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ project.title }}</h5>
+          <p class="card-text">{{ project.short_description|truncatechars:120 }}</p>
+          <a href="{{ project.get_absolute_url }}" class="stretched-link">Read more</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No projects yet. Add one in the admin.</p>
+  {% endfor %}
+</div>
+
+<hr class="my-5">
+<h2>Latest posts</h2>
+<div class="row">
+  {% for post in posts %}
+    <div class="col-md-4">
+      <article>
+        <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
+        <p>{{ post.excerpt|truncatechars:120 }}</p>
+      </article>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

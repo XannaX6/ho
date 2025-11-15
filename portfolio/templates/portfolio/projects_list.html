@@ -1,0 +1,32 @@
+{% extends 'portfolio/base.html' %}
+{% block title %}Projects — YourName{% endblock %}
+{% load static %}
+{% block content %}
+<h1>Projects</h1>
+<div class="row g-4">
+  {% for project in projects %}
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="row g-0">
+          <div class="col-md-4">
+            {% if project.image %}
+              <img src="{{ project.image.url }}" class="img-fluid rounded-start" alt="{{ project.title }}">
+            {% else %}
+              <img src="{% static 'portfolio/images/project-placeholder.png' %}" class="img-fluid rounded-start" alt="placeholder">
+            {% endif %}
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ project.title }}</h5>
+              <p class="card-text">{{ project.short_description }}</p>
+              <a href="{{ project.get_absolute_url }}" class="btn btn-outline-primary">Read case study</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No projects found.</p>
+  {% endfor %}
+</div>
+{% endblock %}

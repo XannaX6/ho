@@ -1,0 +1,35 @@
+body { 
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; 
+    background: #121212 !important;
+    color: #e0e0e0;
+}
+
+.navbar-brand { 
+    font-weight: 700; 
+}
+
+.card { 
+    /* border: none;  */
+    background: #1e1e1e;
+    border: 1px solid #333;
+
+}
+
+.nav-link {
+    color: #bbb !important;
+}
+.nav-link:hover {
+    color: white !important;
+}
+
+
+footer { margin-top: 3rem; }
+
+.btn-dark {
+    background: #333;
+    border: none;
+}
+
+.btn-dark:hover {
+    background: #555;
+}

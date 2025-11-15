@@ -1,0 +1,12 @@
+{% extends 'portfolio/base.html' %}
+{% block title %}{{ post.title }} — Blog{% endblock %}
+{% block content %}
+<article>
+  <h1>{{ post.title }}</h1>
+  <p class="text-muted">Published: {{ post.published|date:"F j, Y" }}</p>
+  {% if post.image %}
+    <img src="{{ post.image.url }}" class="img-fluid mb-4" alt="{{ post.title }}">
+  {% endif %}
+  <div>{{ post.body|linebreaks }}</div>
+</article>
+{% endblock %}

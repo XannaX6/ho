@@ -1,0 +1,12 @@
+{% extends 'portfolio/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Contact — Xanna X6{% endblock %}
+{% block content %}
+<h1>Contact me</h1>
+<p>Have a project or opportunity? Send me a message.</p>
+<form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button class="btn btn-primary" type="submit">Send message</button>
+</form>
+{% endblock %}

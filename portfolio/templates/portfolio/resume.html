@@ -1,0 +1,28 @@
+{% extends 'portfolio/base.html' %}
+{% block title %}Resume — YourName{% endblock %}
+{% block content %}
+<h1>Resume</h1>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Skills</h3>
+    {% for skill in skills %}
+      <div class="mb-3">
+        <div class="d-flex justify-content-between"><strong>{{ skill.name }}</strong><small>{{ skill.level }}%</small></div>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: {{ skill.level }}%;" aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="col-md-6">
+    <h3>Experience</h3>
+    {% for exp in experiences %}
+      <div class="mb-3">
+        <h5>{{ exp.title }} <small class="text-muted">@ {{ exp.company }}</small></h5>
+        <p class="text-muted">{{ exp.start_date }} — {% if exp.end_date %}{{ exp.end_date }}{% else %}Present{% endif %}</p>
+        <p>{{ exp.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

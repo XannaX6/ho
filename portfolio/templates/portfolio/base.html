@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <!-- Bootstrap 5 -->
+     {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+    
+  </head>
+  <body class="bg-dark text-light">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'portfolio:home' %}">Xanna X6</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{% url 'portfolio:projects_list' %}">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'portfolio:blog_list' %}">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'portfolio:resume' %}">Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'portfolio:about' %}">About</a></li>
+          <li class="nav-item"><a class="btn btn-primary ms-2" href="{% url 'portfolio:contact' %}">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-5">
+    <div class="container">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <footer class="bg-dark text-light py-4">
+    <div class="container text-center">
+      <p class="mb-1">&copy; {{ now.year }} Xanna X6 — Built with Django & Bootstrap</p>
+      <small>Follow me: <a href="#" class="text-decoration-none text-light">Twitter</a> • <a href="#" class="text-decoration-none text-light">LinkedIn</a></small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
