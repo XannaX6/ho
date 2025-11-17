@@ -63,7 +63,7 @@ def contact(request):
                 subject=f"Portfolio Contact: {form.cleaned_data['name']}",
                 message=form.cleaned_data['message'],
                 from_email=form.cleaned_data['email'],
-                recipient_list=['your-email@example.com'],
+                recipient_list=['orduhosanna@gmail.com'],
             )
             form.save()
             messages.success(request, 'Thanks — your message has been received. I will get back to you soon.')

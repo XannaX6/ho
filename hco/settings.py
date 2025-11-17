@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'ho-nfuy.onrender.com',
+    "127.0.0.1",
 ]
 
 
